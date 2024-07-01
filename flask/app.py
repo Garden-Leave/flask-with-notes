@@ -2560,7 +2560,7 @@ class Flask(Scaffold):
 # 请求到来时  socketserver.ThreadingMixIn.proecess_request_thread.finish_request--->RequestHandlerClass()--->werkzeug.serving.WSGIRequestHandler
 # --->super--->http/server.BaseHTTPRequestHandler.handle()--->http/server.handle_one_request()--->werkzeug.serving.WSGIRequestHandler.run_wsgi.execute()
 #  flask.app.__call__()--->flask.app.wsgi_app()
-# 请求的response结果生成后，通过start_response入口开始应答过程, 它是从execute函数传过来的 flask这一层不做改变
+# 请求的response结果生成后，通过start_response入口开始应答过程, 它是从execute函数传过来的 flask这一层不做改变 其实就是一个回调函数
     def __call__(self, environ: dict, start_response: t.Callable) -> t.Any:
         """The WSGI server calls the Flask application object as the
         WSGI application. This calls :meth:`wsgi_app`, which can be
